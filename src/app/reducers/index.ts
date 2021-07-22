@@ -6,15 +6,18 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
+import { currentConditionsReducer, CurrentConditionsState } from './current-conditions.reducer';
 import { zipCodeReducer, ZipCodeState } from './zip-codes.reducer';
 
 
 export interface State {
-  zipcodes: ZipCodeState
+  zipcodes: ZipCodeState,
+  currentConditions: CurrentConditionsState
 }
 
 export const reducers: ActionReducerMap<State, any> = {
-  zipcodes: zipCodeReducer
+  currentConditions: currentConditionsReducer,
+  zipcodes: zipCodeReducer,
 };
 
 
