@@ -1,14 +1,11 @@
-import { Action } from '@ngrx/store';
 import { ZipCodeActions, ZipCodesActionTypes } from '../actions/zip-code.actions';
 
-
-export const zipCodesFeatureKey = 'zipCodes';
-
+// export const zipCodesFeatureKey = 'zipCodes';
 export interface ZipCodeState {
   zipcodes: string[]
 }
 
-export const initialState: ZipCodeState = {
+const initialState: ZipCodeState = {
   zipcodes: []
 };
 

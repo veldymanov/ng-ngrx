@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RemoveZipCode } from '../actions/zip-code.actions';
 import { WeatherService } from '../core/services/weather.service';
-import { State } from '../reducers';
+import { selectZipcodeList, State } from '../reducers';
+import { CurrentConditionsState } from '../reducers/current-conditions.reducer';
+import { ZipCodeState } from '../reducers/zip-codes.reducer';
 
 @Component({
   selector: 'app-current-condition',
@@ -11,7 +13,7 @@ import { State } from '../reducers';
 })
 export class CurrentConditionComponent implements OnInit {
   zipcodes: string[] = [];
-  currentConditions: Map<string, any> = new Map();
+  private currentConditions: Map<string, any> = new Map();
 
   constructor(
     public weatherService: WeatherService,
@@ -19,11 +21,13 @@ export class CurrentConditionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.select(state => state.zipcodes)
-      .subscribe(zips => this.zipcodes = zips.zipcodes);
+    this.store.select(selectZipcodeList)
+      .subscribe(zips => {
+        this.zipcodes = zips;
+      });
 
-    this.store.select(state => state.currentConditions)
-      .subscribe(conditions => {
+    this.store.select((state: State) => state.currentConditions)
+      .subscribe((conditions: CurrentConditionsState) => {
         this.currentConditions = conditions.currentConditions;
       });
   }

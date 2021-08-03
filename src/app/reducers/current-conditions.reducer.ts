@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 import { CurrentConditionsActions, CurrentConditionsActionTypes } from '../actions/current-conditions.actions';
 
 
-export const currentConditionsFeatureKey = 'currentConditions';
+// export const currentConditionsFeatureKey = 'currentConditions';
 
 export interface CurrentConditionsState {
   currentConditions: Map<string, any>;
