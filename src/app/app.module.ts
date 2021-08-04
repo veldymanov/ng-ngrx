@@ -17,6 +17,7 @@ import { CurrentConditionsEffects } from './effects/current-conditions.effects';
 import { WeatherService } from './core/services/weather.service';
 
 import { environment } from '../environments/environment';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { environment } from '../environments/environment';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log only
     }),
+    StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [WeatherService],

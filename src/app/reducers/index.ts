@@ -5,6 +5,8 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
+
 import { environment } from '../../environments/environment';
 import { currentConditionsReducer, CurrentConditionsState } from './current-conditions.reducer';
 import { zipCodeReducer, ZipCodeState } from './zip-codes.reducer';
@@ -12,12 +14,14 @@ import { zipCodeReducer, ZipCodeState } from './zip-codes.reducer';
 
 export interface State {
   zipcodes: ZipCodeState,
-  currentConditions: CurrentConditionsState
+  currentConditions: CurrentConditionsState,
+  router: RouterReducerState,
 }
 
 export const reducers: ActionReducerMap<State, any> = {
   currentConditions: currentConditionsReducer,
-  zipcodes: zipCodeReducer
+  zipcodes: zipCodeReducer,
+  router: routerReducer
 };
 
 
